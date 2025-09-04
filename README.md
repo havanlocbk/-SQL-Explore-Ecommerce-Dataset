@@ -43,7 +43,7 @@ The goal is to analyze **website performance, customer behavior, and revenue tre
 
    * Bounce rate by **traffic source** in July 2017.
 
-3. **Revenue Attribution**
+3. **Revenue By Traffic Source*
 
    * Revenue contribution by **traffic source** (weekly & monthly).
 
@@ -51,11 +51,19 @@ The goal is to analyze **website performance, customer behavior, and revenue tre
 
    * Compared **pageviews of purchasers vs. non-purchasers** (June–July 2017).
 
-5. **Purchasing Patterns**
+5. **Average Number of Transactions per Session**
+
+   * Average number of transactions per user that made a purchase in July 2017.
+
+6. **Average Spend per Session**
+
+   * Calculated the average amount of money spent per session for purchasers in July 2017.
+
+7. **Also-Bought Products Analysis**
 
    * Identified **products purchased together** (e.g., with *YouTube Men's Vintage Henley*).
 
-6. **Cohort Funnel**
+8. **Cohort Funnel**
 
    * Conversion funnel from **Pageview → Add to Cart → Purchase** (Jan–Mar 2017).
    * Calculated **add-to-cart rate** and **purchase rate**.
@@ -89,7 +97,7 @@ FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`
 GROUP BY source
 ORDER BY total_visit DESC;
 ```
-3) **Revenue Attribution (Month vs Week) — Jun 2017**
+3) **Revenue By Traffic Source — Jun 2017**
 
 ```sql   
 -- Query 03
@@ -121,7 +129,7 @@ ORDER BY total_visit DESC;
 ORDER BY time_type, time_period, trafficSource.source;
 ```
 
-4) **Avg. Pageviews — Purchasers vs Non-Purchasers (Jun–Jul 2017)**
+4) **User Behavior — Purchasers vs Non-Purchasers (Jun–Jul 2017)**
 ```sql
 -- Query 04
 WITH table_purchaser AS (
