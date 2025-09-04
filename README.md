@@ -88,7 +88,7 @@ Result:
 
 <img width="973" height="187" alt="image" src="https://github.com/user-attachments/assets/4dcf96f4-c7ea-4d02-b204-57f91fce883f" />
 
-
+---
 2) **Bounce Rate by Traffic Source — Jul 2017**
 ```sql
 -- Query 02
@@ -105,7 +105,7 @@ Result:
 
 <img width="1108" height="431" alt="image" src="https://github.com/user-attachments/assets/9c252eda-9716-47a6-b0c5-87b18d2339d2" />
 
-
+---
 3) **Revenue By Traffic Source — Jun 2017**
 
 ```sql   
@@ -142,7 +142,7 @@ Result:
 <img width="1380" height="523" alt="image" src="https://github.com/user-attachments/assets/027c2ef0-5571-4212-b54e-3b2afad234ba" />
 <img width="1378" height="524" alt="image" src="https://github.com/user-attachments/assets/232c62bd-776a-4fbc-9206-0638f189064a" />
 
-
+---
 4) **User Behavior — Purchasers vs Non-Purchasers (Jun–Jul 2017)**
 ```sql
 -- Query 04
@@ -181,7 +181,7 @@ Result:
 
 <img width="902" height="153" alt="image" src="https://github.com/user-attachments/assets/0b4803fe-2b8c-445d-b07b-083d4a94f2a6" />
 
-
+---
 5) **Avg. Transactions per Purchasing User — Jul 2017**
 ```sql
 -- Query 05
@@ -210,7 +210,7 @@ Result:
 
 <img width="660" height="104" alt="image" src="https://github.com/user-attachments/assets/e7861a50-4a14-4183-a3b4-c07748cced8f" />
 
-
+---
 6) **Avg. Spend per Session (Purchasers Only) — Jul 2017**
 ```sql
 -- Option 1:
@@ -238,6 +238,7 @@ Result:
 
 <img width="643" height="96" alt="image" src="https://github.com/user-attachments/assets/adc27727-ff52-4306-aefa-49eeaa5ec1b9" />
 
+---
 7) **Also-Bought Products (Anchor: “YouTube Men's Vintage Henley”) — Jul 2017**
 ```sql
 -- Query 07
@@ -266,6 +267,7 @@ Result:
 
 <img width="679" height="530" alt="image" src="https://github.com/user-attachments/assets/ff35d432-44d0-45cb-8d75-ab2fbee4ef79" />
 
+---
 8) **Funnel Cohort: Pageview → Add-to-Cart → Purchase — Jan–Mar 2017**
 
 ```sql
