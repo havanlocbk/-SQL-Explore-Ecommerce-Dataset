@@ -84,6 +84,10 @@ WHERE _TABLE_SUFFIX BETWEEN '0101' AND '0331'
 GROUP BY month
 ORDER BY month;
 ```
+Result:
+
+<img width="973" height="187" alt="image" src="https://github.com/user-attachments/assets/4dcf96f4-c7ea-4d02-b204-57f91fce883f" />
+
 
 2) **Bounce Rate by Traffic Source — Jul 2017**
 ```sql
@@ -97,6 +101,11 @@ FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`
 GROUP BY source
 ORDER BY total_visit DESC;
 ```
+Result:
+
+<img width="1108" height="431" alt="image" src="https://github.com/user-attachments/assets/9c252eda-9716-47a6-b0c5-87b18d2339d2" />
+
+
 3) **Revenue By Traffic Source — Jun 2017**
 
 ```sql   
@@ -128,6 +137,11 @@ ORDER BY total_visit DESC;
 )
 ORDER BY time_type, time_period, trafficSource.source;
 ```
+Result:
+
+<img width="1380" height="523" alt="image" src="https://github.com/user-attachments/assets/027c2ef0-5571-4212-b54e-3b2afad234ba" />
+<img width="1378" height="524" alt="image" src="https://github.com/user-attachments/assets/232c62bd-776a-4fbc-9206-0638f189064a" />
+
 
 4) **User Behavior — Purchasers vs Non-Purchasers (Jun–Jul 2017)**
 ```sql
@@ -163,10 +177,15 @@ FROM table_purchaser p
 FULL JOIN table_non_purchaser np ON p.month = np.month
 ORDER BY month;
 ```
+Result:
+
+<img width="902" height="153" alt="image" src="https://github.com/user-attachments/assets/0b4803fe-2b8c-445d-b07b-083d4a94f2a6" />
+
 
 5) **Avg. Transactions per Purchasing User — Jul 2017**
 ```sql
--- Query 05 (ver 1: fixed month)
+-- Query 05
+-- Option 1:
 SELECT
   '201707' AS month,
   SAFE_DIVIDE(SUM(totals.transactions), COUNT(DISTINCT fullVisitorId)) AS Avg_total_transactions_per_user
@@ -176,7 +195,7 @@ FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`,
 WHERE totals.transactions >= 1
   AND product.productRevenue IS NOT NULL;
 
--- Query 05 (ver 2: flexible, group by month)
+-- Option 2:
 SELECT
   FORMAT_DATE('%Y%m', PARSE_DATE('%Y%m%d', date)) AS month,
   SAFE_DIVIDE(SUM(totals.transactions), COUNT(DISTINCT fullVisitorId)) AS Avg_total_transactions_per_user
@@ -187,9 +206,14 @@ WHERE totals.transactions >= 1
   AND product.productRevenue IS NOT NULL
 GROUP BY month;
 ```
+Result:
+
+<img width="660" height="104" alt="image" src="https://github.com/user-attachments/assets/e7861a50-4a14-4183-a3b4-c07748cced8f" />
+
+
 6) **Avg. Spend per Session (Purchasers Only) — Jul 2017**
 ```sql
--- Query 06 (ver 1: fixed month)
+-- Option 1:
 SELECT
   '201707' AS month,
   ROUND( SAFE_DIVIDE(SUM(product.productRevenue) / 1e6, SUM(totals.visits)), 2 ) AS avg_spend_per_session
@@ -199,7 +223,7 @@ FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`,
 WHERE totals.transactions IS NOT NULL
   AND product.productRevenue IS NOT NULL;
 
--- Query 06 (ver 2, group by month)
+-- Option 2
 SELECT
   FORMAT_DATE('%Y%m', PARSE_DATE('%Y%m%d', date)) AS month,
   SAFE_DIVIDE(SUM(product.productRevenue), SUM(totals.visits)) / 1e6 AS avg_revenue_by_user_per_visit
@@ -210,6 +234,9 @@ WHERE product.productRevenue IS NOT NULL
   AND totals.transactions >= 1
 GROUP BY month;
 ```
+Result:
+
+<img width="643" height="96" alt="image" src="https://github.com/user-attachments/assets/adc27727-ff52-4306-aefa-49eeaa5ec1b9" />
 
 7) **Also-Bought Products (Anchor: “YouTube Men's Vintage Henley”) — Jul 2017**
 ```sql
@@ -235,6 +262,10 @@ WHERE fullVisitorId IN (SELECT fullVisitorId FROM product_purchased_users)
 GROUP BY other_purchased_products
 ORDER BY quantity DESC;
 ```
+Result:
+
+<img width="679" height="530" alt="image" src="https://github.com/user-attachments/assets/ff35d432-44d0-45cb-8d75-ab2fbee4ef79" />
+
 8) **Funnel Cohort: Pageview → Add-to-Cart → Purchase — Jan–Mar 2017**
 
 ```sql
@@ -338,6 +369,10 @@ SELECT
 FROM product_data
 ORDER BY month;
 ```
+Result:
+
+<img width="1356" height="197" alt="image" src="https://github.com/user-attachments/assets/ef73648d-7820-4d6e-a6c9-c96e8e61e89d" />
+
 ---
 
 ## 🛠 Tools & Skills
@@ -348,23 +383,30 @@ ORDER BY month;
 
 ---
 
+Got it ✅ Here’s the concise English version following your sample format, updated with your actual findings:
+
+---
+
 ## 📊 Results
 
 Key findings from the dataset:
 
-* Seasonal trends in **visits and revenue** (Q1 2017).
-* High **bounce rates** in certain traffic sources indicating inefficient campaigns.
-* Clear **drop-offs in conversion funnel**: only \~X% of product views → purchases.
-* Purchasing patterns show opportunities for **cross-selling**.
-
-*(screenshots of query results)*
+* Steady growth in **visits and transactions** across Q1 2017 (+40% transactions).
+* High **bounce rates** from several traffic sources, suggesting inefficient campaigns.
+* Strong **revenue contribution** from **Direct** (\~97K) and **Google** (\~18.7K) traffic.
+* Purchasers had far fewer pageviews than non-purchasers, showing more **focused browsing behavior**.
+* Funnel analysis shows **drop-offs**: only \~8–13% of product views converted to purchases.
+* Also-bought patterns highlight clear **cross-sell opportunities** (e.g., Google Sunglasses with YouTube apparel).
+* Average spend per purchaser session in Jul 2017 was **\~43.86**.
 
 ---
 
 ## 🚀 Next Steps
 
-* Visualize the results using **Power BI / Tableau**.
-* Build an **interactive dashboard** showing conversion funnels, traffic breakdown, and product-level performance.
-* Extend analysis with **Machine Learning** (e.g., customer segmentation, churn prediction).
+* Visualize KPIs and funnels using **Power BI / Tableau**.
+* Build an **interactive dashboard** tracking revenue by source, bounce rate, and conversion funnel.
+* Leverage **cross-sell recommendations** to boost average order value.
+* Extend analysis with **Machine Learning** (e.g., customer segmentation, purchase prediction).
 
 ---
+
