@@ -9,13 +9,19 @@ Applied SQL in Google BigQuery to create queries, enabling data extraction and a
 
 ## 📑 Table of Contents
 
-I. [Introduction](#introduction)
-II. [Dataset](#dataset)
-III. [Key Queries & Insights](#key-queries--insights)
-IV. [SQL Queries]
-V. [Tools & Skills](#tools--skills)
-VI. [Results](#results)
-VII. [Next Steps](#next-steps)
+I. Introduction
+
+II. Dataset
+
+III. Key Queries & Insights
+
+IV. SQL Queries
+
+V. Tools & Skills
+
+VI. Results
+
+VII. Next Steps
 
 ---
 
@@ -69,7 +75,7 @@ The goal is to analyze **website performance, customer behavior, and revenue tre
    * Conversion funnel from **Pageview → Add to Cart → Purchase** (Jan–Mar 2017).
    * Calculated **add-to-cart rate** and **purchase rate**.
 ---
-## 📜 SQL Queries
+## 📜 IV. SQL Queries
 1) **Traffic KPIs (Visits/Pageviews/Transactions) — Jan–Mar 2017**
 
 ```sql
