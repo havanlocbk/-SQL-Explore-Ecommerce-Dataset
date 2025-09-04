@@ -1,7 +1,7 @@
-# [SQL] eCommerce Analytics with SQL & BigQuery
+# eCommerce Analytics: Customer Behavior & Conversion Funnel using SQL on BigQuery
 Applied SQL in Google BigQuery to create queries, enabling data extraction and analysis for business decision-making
 ---
-# eCommerce Analytics with SQL & BigQuery
+# eCommerce Analytics with SQL on BigQuery
 
 ![BigQuery](https://img.shields.io/badge/Google-BigQuery-blue?logo=google-cloud)
 ![SQL](https://img.shields.io/badge/Language-SQL-green)
