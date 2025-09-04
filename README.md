@@ -9,23 +9,24 @@ Applied SQL in Google BigQuery to create queries, enabling data extraction and a
 
 ## 📑 Table of Contents
 
-1. [Introduction](#introduction)
-2. [Dataset](#dataset)
-3. [Key Queries & Insights](#key-queries--insights)
-4. [Tools & Skills](#tools--skills)
-5. [Results](#results)
-6. [Next Steps](#next-steps)
+I. [Introduction](#introduction)
+II. [Dataset](#dataset)
+III. [Key Queries & Insights](#key-queries--insights)
+IV. [SQL Queries]
+V. [Tools & Skills](#tools--skills)
+VI. [Results](#results)
+VII. [Next Steps](#next-steps)
 
 ---
 
-## 📌 Introduction
+## 📌 I. Introduction
 
 This project explores the **Google Analytics eCommerce dataset** using SQL on **Google BigQuery**.
 The goal is to analyze **website performance, customer behavior, and revenue trends**, providing insights that can inform data-driven business decisions.
 
 ---
 
-## 📂 Dataset
+## 📂 II. Dataset
 
 * **Source**: [Google Analytics Sample Dataset](https://console.cloud.google.com/marketplace/product/goog-public-data/google-analytics-sample)
 * **Tables Used**: `bigquery-public-data.google_analytics_sample.ga_sessions_*`
@@ -33,7 +34,7 @@ The goal is to analyze **website performance, customer behavior, and revenue tre
 
 ---
 
-## 🔍 Key Queries & Insights
+## 🔍 III. Key Queries & Insights
 
 1. **Traffic & Revenue Trends**
 
@@ -377,7 +378,7 @@ Result:
 
 ---
 
-## 🛠 Tools & Skills
+## 🛠 V. Tools & Skills
 
 * **SQL**: Aggregations, filtering, cohort analysis, and funnel metrics.
 * **Google BigQuery**: Querying large-scale datasets efficiently.
@@ -385,7 +386,7 @@ Result:
 
 ---
 
-## 📊 Results
+## 📊 VI. Results
 
 Key findings from the dataset:
 
@@ -399,7 +400,7 @@ Key findings from the dataset:
 
 ---
 
-## 🚀 Next Steps
+## 🚀 VII. Next Steps
 
 * Visualize KPIs and funnels using **Power BI / Tableau**.
 * Build an **interactive dashboard** tracking revenue by source, bounce rate, and conversion funnel.
