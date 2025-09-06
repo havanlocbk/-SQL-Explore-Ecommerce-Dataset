@@ -11,13 +11,13 @@ Applied SQL in Google BigQuery to create queries, enabling data extraction and a
 ## 📑 Table of Contents
 
 📑 Table of Contents  
-- [I. Introduction](#i-introduction)  
-- [II. Dataset](#ii-dataset)  
-- [III. Key Queries & Insights](#iii-key-queries--insights)  
-- [IV. SQL Queries](#iv-sql-queries)  
-- [V. Tools & Skills](#v-tools--skills)  
-- [VI. Results](#vi-results)  
-- [VII. Next Steps](#vii-next-steps)  
+ [📌 I. Introduction](#i-introduction)  
+ [📂 II. Dataset](#ii-dataset)  
+ [🔍 III. Key Queries & Insights](#iii-key-queries--insights)  
+ [📜 IV. SQL Queries](#iv-sql-queries)  
+ [🛠 V. Tools & Skills](#v-tools--skills)  
+ [📊 VI. Results](#vi-results)  
+ [🚀 VII. Next Steps](#vii-next-steps)  
 
 
 ---
