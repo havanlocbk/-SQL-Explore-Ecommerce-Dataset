@@ -1,6 +1,6 @@
 # eCommerce Analytics: Customer Behavior & Conversion Funnel using SQL on BigQuery
 
-Applied SQL in Google BigQuery to create queries, enabling data extraction and analysis for business decision-making
+*Applied SQL in Google BigQuery to create queries, enabling data extraction and analysis for business decision-making*
 ---
 # eCommerce Analytics with SQL on BigQuery
 
@@ -13,11 +13,10 @@ Applied SQL in Google BigQuery to create queries, enabling data extraction and a
 📑 Table of Contents  
  [📌 I. Introduction](#i-introduction)  
  [📂 II. Dataset](#ii-dataset)  
- [🔍 III. Key Queries & Insights](#iii-key-queries--insights)  
- [📜 IV. SQL Queries](#iv-sql-queries)  
- [🛠 V. Tools & Skills](#v-tools--skills)  
- [📊 VI. Results](#vi-results)  
- [🚀 VII. Next Steps](#vii-next-steps)  
+ [📜 III. Key Queries](#iii-key-queries)  
+ [🛠 IV. Tools & Skills](#iv-tools--skills)  
+ [📊 V. Results](#v-results)  
+ [🚀 VI. Next Steps](#vi-next-steps)  
 
 
 ---
@@ -35,45 +34,10 @@ The goal is to analyze **website performance, customer behavior, and revenue tre
 * **Tables Used**: `bigquery-public-data.google_analytics_sample.ga_sessions_*`
 * Covers **2017 eCommerce website sessions** including user traffic, transactions, and product activity.
 
----
-
-## 🔍 III. Key Queries & Insights
-
-1. **Traffic & Revenue Trends**
-
-   * Calculated **visits, pageviews, transactions, and revenue** by month (Jan–Mar 2017).
-
-2. **Bounce Rate Analysis**
-
-   * Bounce rate by **traffic source** in July 2017.
-
-3. **Revenue By Traffic Source*
-
-   * Revenue contribution by **traffic source** (weekly & monthly).
-
-4. **User Behavior**
-
-   * Compared **pageviews of purchasers vs. non-purchasers** (June–July 2017).
-
-5. **Average Number of Transactions per Session**
-
-   * Average number of transactions per user that made a purchase in July 2017.
-
-6. **Average Spend per Session**
-
-   * Calculated the average amount of money spent per session for purchasers in July 2017.
-
-7. **Also-Bought Products Analysis**
-
-   * Identified **products purchased together** (e.g., with *YouTube Men's Vintage Henley*).
-
-8. **Cohort Funnel**
-
-   * Conversion funnel from **Pageview → Add to Cart → Purchase** (Jan–Mar 2017).
-   * Calculated **add-to-cart rate** and **purchase rate**.
----
-## 📜 IV. SQL Queries
-1) **Traffic KPIs (Visits/Pageviews/Transactions) — Jan–Mar 2017**
+## 📜 IV. Business Questions & SQL Analysis
+1) **How did traffic and transactions trend in Q1 2017?**
+   
+*Traffic KPIs (Visits/Pageviews/Transactions) — Jan–Mar 2017*
 
 ```sql
 
@@ -88,12 +52,18 @@ WHERE _TABLE_SUFFIX BETWEEN '0101' AND '0331'
 GROUP BY month
 ORDER BY month;
 ```
-Result:
+**Result:**
 
 <img width="973" height="187" alt="image" src="https://github.com/user-attachments/assets/4dcf96f4-c7ea-4d02-b204-57f91fce883f" />
 
+
+**🔎Insight:** Transactions grew steadily in Q1 2017, with ~40% increase from Jan → Mar.  
+
 ---
-2) **Bounce Rate by Traffic Source — Jul 2017**
+2) **Which traffic sources caused the highest bounce rates?**
+
+*Bounce Rate by Traffic Source — Jul 2017*
+
 ```sql
 -- Query 02
 SELECT
@@ -105,12 +75,17 @@ FROM `bigquery-public-data.google_analytics_sample.ga_sessions_201707*`
 GROUP BY source
 ORDER BY total_visit DESC;
 ```
-Result:
+**Result:**
 
 <img width="1108" height="431" alt="image" src="https://github.com/user-attachments/assets/9c252eda-9716-47a6-b0c5-87b18d2339d2" />
 
+
+**🔎Insight:** Several major sources had bounce rates >50%, signaling inefficient acquisition campaigns.
+
 ---
-3) **Revenue By Traffic Source — Jun 2017**
+3) **Which channels drove the most revenue in June 2017?**
+
+*Revenue By Traffic Source — Jun 2017*
 
 ```sql   
 -- Query 03
@@ -141,13 +116,18 @@ Result:
 )
 ORDER BY time_type, time_period, trafficSource.source;
 ```
-Result:
+**Result:**
 
 <img width="1380" height="523" alt="image" src="https://github.com/user-attachments/assets/027c2ef0-5571-4212-b54e-3b2afad234ba" />
 <img width="1378" height="524" alt="image" src="https://github.com/user-attachments/assets/232c62bd-776a-4fbc-9206-0638f189064a" />
 
+
+**🔎Insight:** Direct traffic contributed ~97K and Google search ~18.7K, together driving the bulk of revenue. 
+
 ---
-4) **User Behavior — Purchasers vs Non-Purchasers (Jun–Jul 2017)**
+4) ** Do purchasers behave differently from non-purchasers?**
+
+*User Behavior — Purchasers vs Non-Purchasers (Jun–Jul 2017)*
 ```sql
 -- Query 04
 WITH table_purchaser AS (
@@ -181,12 +161,18 @@ FROM table_purchaser p
 FULL JOIN table_non_purchaser np ON p.month = np.month
 ORDER BY month;
 ```
-Result:
+**Result:**
 
 <img width="902" height="153" alt="image" src="https://github.com/user-attachments/assets/0b4803fe-2b8c-445d-b07b-083d4a94f2a6" />
 
+
+**🔎Insight:** Purchasers had fewer pageviews than non-purchasers → more focused journeys to checkout. 
+
 ---
-5) **Avg. Transactions per Purchasing User — Jul 2017**
+5) **How many transactions did each purchaser make on average?**
+
+*Avg. Transactions per Purchasing User — Jul 2017*
+
 ```sql
 -- Query 05
 -- Option 1:
@@ -210,12 +196,18 @@ WHERE totals.transactions >= 1
   AND product.productRevenue IS NOT NULL
 GROUP BY month;
 ```
-Result:
+**Result:**
 
 <img width="660" height="104" alt="image" src="https://github.com/user-attachments/assets/e7861a50-4a14-4183-a3b4-c07748cced8f" />
 
+
+**🔎Insight:** On average, each purchasing user made just over **1 transaction** in July 2017.  
+
 ---
-6) **Avg. Spend per Session (Purchasers Only) — Jul 2017**
+6) **How much did purchasers spend per session?**
+
+*Avg. Spend per Session (Purchasers Only) — Jul 2017*
+
 ```sql
 -- Option 1:
 SELECT
@@ -238,12 +230,18 @@ WHERE product.productRevenue IS NOT NULL
   AND totals.transactions >= 1
 GROUP BY month;
 ```
-Result:
+**Result:**
 
 <img width="643" height="96" alt="image" src="https://github.com/user-attachments/assets/adc27727-ff52-4306-aefa-49eeaa5ec1b9" />
 
+
+**🔎Insight:** Avg. spend per purchaser session in Jul 2017 ≈ **43.9 units**.  
+
 ---
-7) **Also-Bought Products (Anchor: “YouTube Men's Vintage Henley”) — Jul 2017**
+7) **Which products were most often bought together?**
+
+*Also-Bought Products (Anchor: “YouTube Men's Vintage Henley”) — Jul 2017*
+
 ```sql
 -- Query 07
 WITH product_purchased_users AS (
@@ -267,12 +265,17 @@ WHERE fullVisitorId IN (SELECT fullVisitorId FROM product_purchased_users)
 GROUP BY other_purchased_products
 ORDER BY quantity DESC;
 ```
-Result:
+**Result:**
 
 <img width="679" height="530" alt="image" src="https://github.com/user-attachments/assets/ff35d432-44d0-45cb-8d75-ab2fbee4ef79" />
 
+
+**🔎Insight:** Top cross-sell: **Google Sunglasses** and other YouTube apparel with Henley buyers.  
+
 ---
-8) **Funnel Cohort: Pageview → Add-to-Cart → Purchase — Jan–Mar 2017**
+8) **What was the conversion funnel (Pageview → Add-to-Cart → Purchase) rate?**
+
+*Funnel Cohort: Pageview → Add-to-Cart → Purchase — Jan–Mar 2017*
 
 ```sql
 -- Query 08
@@ -375,13 +378,16 @@ SELECT
 FROM product_data
 ORDER BY month;
 ```
-Result:
+**Result:**
 
 <img width="1356" height="197" alt="image" src="https://github.com/user-attachments/assets/ef73648d-7820-4d6e-a6c9-c96e8e61e89d" />
 
+
+**🔎Insight:** Only **8–13%** of product views turned into purchases, revealing significant funnel drop-offs. 
+
 ---
 
-## 🛠 V. Tools & Skills
+## 🛠 IV. Tools & Skills
 
 * **SQL**: Aggregations, filtering, cohort analysis, and funnel metrics.
 * **Google BigQuery**: Querying large-scale datasets efficiently.
@@ -389,7 +395,7 @@ Result:
 
 ---
 
-## 📊 VI. Results
+## 📊 V. Results
 
 Key findings from the dataset:
 
@@ -403,7 +409,7 @@ Key findings from the dataset:
 
 ---
 
-## 🚀 VII. Next Steps
+## 🚀 VI. Next Steps
 
 * Visualize KPIs and funnels using **Power BI / Tableau**.
 * Build an **interactive dashboard** tracking revenue by source, bounce rate, and conversion funnel.
