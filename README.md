@@ -1,6 +1,11 @@
 # eCommerce Analytics: Customer Behavior & Conversion Funnel using SQL on BigQuery
 
-*Applied SQL in Google BigQuery to create queries, enabling data extraction and analysis for business decision-making*
+Applied SQL in Google BigQuery to create queries, enabling data extraction and analysis for business decision-making
+
+**📝Author:** Loc Ha
+
+**🗓️Date:** June 2025
+
 ---
 # eCommerce Analytics with SQL on BigQuery
 
@@ -25,6 +30,14 @@
 
 This project explores the **Google Analytics eCommerce dataset** using SQL on **Google BigQuery**.
 The goal is to analyze **website performance, customer behavior, and revenue trends**, providing insights that can inform data-driven business decisions.
+
+## 👥 Who is this project for?
+
+✔️ Data analysts & business analysts  
+
+✔️ eCommerce managers & digital marketers  
+
+✔️ Decision-makers & stakeholders
 
 ---
 
