@@ -13,7 +13,7 @@
 📑 Table of Contents  
  [📌 I. Introduction](#i-introduction)  
  [📂 II. Dataset](#ii-dataset)  
- [📜 III. Key Queries](#iii-key-queries)  
+ [📜 III. Business Questions & SQL Analysis](#iii-business-questions-0sql-analysis)  
  [🛠 IV. Tools & Skills](#iv-tools--skills)  
  [📊 V. Results](#v-results)  
  [🚀 VI. Next Steps](#vi-next-steps)  
@@ -34,7 +34,7 @@ The goal is to analyze **website performance, customer behavior, and revenue tre
 * **Tables Used**: `bigquery-public-data.google_analytics_sample.ga_sessions_*`
 * Covers **2017 eCommerce website sessions** including user traffic, transactions, and product activity.
 
-## 📜 IV. Business Questions & SQL Analysis
+## 📜 III. Business Questions & SQL Analysis
 1) **How did traffic and transactions trend in Q1 2017?**
    
 *Traffic KPIs (Visits/Pageviews/Transactions) — Jan–Mar 2017*
